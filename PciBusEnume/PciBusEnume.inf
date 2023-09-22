@@ -1,0 +1,57 @@
+#  Copyright (c) Huawei Technologies Co., Ltd. 2023. All rights reserved.
+#  Description : Component description file about IO Initialization INF
+#  Author      : gwx1264738
+#  Create      : 2023/08/23
+
+[Defines]
+  INF_VERSION                    = 0x0001001A
+  BASE_NAME                      = PciBusEnumeDxe
+  FILE_GUID                      = 2f8c7417-e35f-970c-6baf-d74f34814d7e
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PciBusEnumeDxeEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = AARCH64
+#
+
+[Sources.common]
+  PciBusEnume.c
+
+[Packages]
+  HwPkg/UEFI/HwPkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  BaseLib
+  BaseMemoryLib
+  DebugLib
+  DxeServicesTableLib
+  MemoryAllocationLib
+  PcdLib
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+  UefiLib
+  HwSafeOperationLib
+  DevicePathLib
+  IpmiCmdLib
+  PciLib
+
+[Protocols]
+  gEfiPciIoProtocolGuid
+  gEfiMbaProtocolGuid
+  gEfiDevicePathProtocolGuid
+  gEfiPciRootBridgeIoProtocolGuid
+  gEfiPciHostBridgeResourceAllocationProtocolGuid
+
+[Pcd]
+  gHisiTokenSpaceGuid.PcdMaxSocket
+[Guids]
+  gEfiEndOfDxeEventGroupGuid
+
+[Depex]
+  TRUE
+
